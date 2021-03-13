@@ -18,7 +18,8 @@ Final project for Bootcamp, web app that predicts NBA game outcomes
                                                  
 ##### Languages      
   
-##### Cloud Service
+##### Cloud Service  
+* Heroku 
 
 ### Deployment
 

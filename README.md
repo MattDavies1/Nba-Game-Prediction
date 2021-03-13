@@ -8,15 +8,15 @@
 - Eric Lee
 
 ### Our project Goal  
-Final project for Bootcamp, web app that predicts NBA game outcomes
+Our project goal is create an ELO system for NBA teams and build a model that predicts game scores between teams, hence predicting which team will win. The model will be built using historical NBA data and the ELO system created. 
 
 ### What We Are Using
 
 ##### Data Sources 
-
-##### DataBase Services                                                  
+* NBA           
                                                  
-##### Languages      
+##### Languages 
+* Python
   
 ##### Cloud Service  
 * Heroku 
@@ -24,5 +24,3 @@ Final project for Bootcamp, web app that predicts NBA game outcomes
 ### Deployment
 
 A flask app will be created and hosted on Heroku.
-
-##### Home 

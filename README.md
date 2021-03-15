@@ -20,6 +20,7 @@ Our project goal is create an ELO rating system for NBA teams and build a model 
                                                  
 ##### Languages 
 * Python
+* HTML, JS, CSS
   
 ##### Cloud Service  
 * Heroku 

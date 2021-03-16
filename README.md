@@ -16,7 +16,7 @@ Our project goal is create an ELO rating system for NBA teams and build a model 
 * NBA   
 
 ##### DataBase Services   
-* ElephantSQL
+* PostgreSQL
                                                  
 ##### Languages 
 * Python

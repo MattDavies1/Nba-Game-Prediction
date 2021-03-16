@@ -20,6 +20,11 @@ from sqlalchemy.orm import Session
 # Flask Setup
 app = Flask(__name__)
 
+engine = create_engine("")
+
+Base = automap_base()
+Base.prepare(engine, reflect=True)
+
 @app.route("/")
 def home():
     return render_template("index.html")

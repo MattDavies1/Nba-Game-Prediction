@@ -28,10 +28,6 @@ Base.prepare(engine, reflect=True)
 def home():
     return render_template("index.html")
 
-@app.route("/games")
-def gamepage():
-    return render_template("games.html")
-
 # Service Routes
 @app.route("/teams")
 def teamsroute():

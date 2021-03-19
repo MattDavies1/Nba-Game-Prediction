@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NBA</title>
     
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/basketball.png') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 
 <body>
@@ -37,9 +38,21 @@
 
     <div class="game-scores">
         <div class="card card-body bg-light">
-            <div class="card-header">
-                <h3>Basketball Games</h3>
+            <div class ="container-fluid" id ='js-code'>
+                <div class ="row">
+                    <div class = "col-sm-12">
+                        <div class ="card card-body bg-light">
+                            <div id ="body_text">
+                            Basketball Games
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
+                            
+
+
             <div class="card-body">
                 <div class="tab-content" id="myTabContent"> 
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -81,10 +94,8 @@
 
 
 
-    <script src="{{ url_for('static', filename='js/js.js') }}"></script>
     <script src="../static/js/team_colours.js"></script>
 
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
     <script src="../static/js/html_design.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>

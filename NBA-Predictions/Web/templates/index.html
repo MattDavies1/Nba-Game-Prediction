@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/basketball.png') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="../static/js/dummy_games.json"></script>
 </head>
 
 <body>
@@ -66,7 +67,9 @@
 
 
 
-    <script src="{{ url_for('static', filename='js/table.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='../js/table.js') }}"></script> -->
+    <script src="../static/js/dummy_games.json"></script>
+    <script src="../static/js/table.js"></script>
     <script src="../static/js/team_colours.js"></script>
 </body>
 

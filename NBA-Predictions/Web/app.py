@@ -18,7 +18,7 @@ from sqlalchemy.orm import Session
 # Flask Setup
 app = Flask(__name__)
 
-engine = create_engine("postgres://rjwcbiog:OaptK8Zo92u-VEYN5GPg_HZB0HhUUdZ2@queenie.db.elephantsql.com:5432/rjwcbiog")
+engine = create_engine("postgres://awajcqhq:4CfuU4ZPzBv5ax89ArRPL9P51juwwfQf@queenie.db.elephantsql.com:5432/awajcqhq")
 
 Base = automap_base()
 Base.prepare(engine, reflect=True)

@@ -5,7 +5,7 @@ var dummy_games = [{"game_date":"2021-03-20", "home_team":"TOR", "away_team":"OK
 
 //creating table function
 dummy_games.forEach((game) => {
-    if(game.tree_winner= game.home_team){
+    if(game.tree_winner== game.home_team){
         temp_home_elo = game.home_elo + 100;
         elo_diff = game.away_elo - temp_home_elo;
         home_chance = (1/(1+10**(elo_diff/400)))*100;

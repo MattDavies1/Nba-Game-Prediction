@@ -9,6 +9,8 @@ keys.forEach((key)=>{
     dropdown.append("option").text(key).property("value",key).attr("id",key)
   });
 });
+
+
 function updatePlot(teamid){
 // Define SVG area dimensions
 var svgWidth = 960;
@@ -48,7 +50,7 @@ var parseTime = d3.timeParse("%Y-%m-%d");
 
     // Format the date and cast the miles value to a number
     teamdata.forEach(function(data) {
-      data.date = parseTime(data["DATE"]);
+      data.date = parseTime(data["Date"]);
       data.team = +data[teamid];
     });
 

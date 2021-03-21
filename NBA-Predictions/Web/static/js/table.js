@@ -58,24 +58,24 @@ var header = `
 
 
 dummy_games.forEach(game=>{
-    if(game.home_elo > geme.away_elo){
-        temp_home_elo = game.home_elo + 100;
-        elo_diff = game.away_elo - temp_home_elo;
-        home_chance = (1/(1+10**(elo_diff/400)))*100;
-        home_chance = home_chance.toFixed(2);
-        away_chance = (1-(1/(1+10**(elo_diff/400))))*100;
-        away_chance = away_chance.toFixed(2);
-        elo_est_pts_margin = (temp_home_elo - game.away_elo)/28;
-    }
-    else if(game.home_elo < game.away_elo){
-        temp_home_elo = game.home_elo + 100;
-        elo_diff = temp_home_elo - game.away_elo;
-        home_chance = (1/(1+10**(elo_diff/400)))*100;
-        home_chance = home_chance.toFixed(2);
-        away_chance = (1-(1/(1+10**(elo_diff/400))))*100;
-        away_chance = away_chance.toFixed(2);
-        elo_est_pts_margin = (game.away_elo - temp_home_elo)/28;
-    }
+    // if(game.home_elo > geme.away_elo){
+    //     temp_home_elo = game.home_elo + 100;
+    //     elo_diff = game.away_elo - temp_home_elo;
+    //     home_chance = (1/(1+10**(elo_diff/400)))*100;
+    //     home_chance = home_chance.toFixed(2);
+    //     away_chance = (1-(1/(1+10**(elo_diff/400))))*100;
+    //     away_chance = away_chance.toFixed(2);
+    //     elo_est_pts_margin = (temp_home_elo - game.away_elo)/28;
+    // }
+    // else if(game.home_elo < game.away_elo){
+    //     temp_home_elo = game.home_elo + 100;
+    //     elo_diff = temp_home_elo - game.away_elo;
+    //     home_chance = (1/(1+10**(elo_diff/400)))*100;
+    //     home_chance = home_chance.toFixed(2);
+    //     away_chance = (1-(1/(1+10**(elo_diff/400))))*100;
+    //     away_chance = away_chance.toFixed(2);
+    //     elo_est_pts_margin = (game.away_elo - temp_home_elo)/28;
+    // }
 
     // add header of table card
     var container = d3.select("#game-cards")

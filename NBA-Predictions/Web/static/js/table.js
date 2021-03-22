@@ -48,9 +48,10 @@ var header = `
 <thead>
     <tr>
         <th scope="col"></th>
-        <th scope="col">ELO win margin</th>
-        <th scope="col">ELO win prob.</th>
-        <th scope="col">Tree spread</th>
+        <th scope="col"></th>
+        <th scope="col">ELO win<br> margin</th>
+        <th scope="col">ELO win<br> prob.</th>
+        <th scope="col">Tree<br>spread</th>
     </tr>
 </thead>
 `
@@ -98,24 +99,25 @@ dummy_games.forEach(game=>{
     // add header of table card
     var container = d3.select("#game-cards")
     var column = container.append("div").attr("class", "col-sm-6")
-    var card = column.append("div").attr("class", "card")
+    var card = column.append("div").attr("class", "card mb-3")
     var card_body = card.append("div").attr("class", "card-body")
     var table = card_body.append("table").attr("class", "table").html(header)
     
     // define table body text here
     tbody_html = `<tr>
+                    <td><img src="static/images/teams/${game.home}.png" class="mx-auto d-block" style="height:25px;"></td>
                    <th scope="row">${game.home}</th>
                    <td>${elo_pts_margin_home}</td>
                    <td>${home_chance}</td>
                    <td>${tree_spread_home}</td>
                  </tr>
                  <tr>
+                 <td><img src="static/images/teams/${game.away}.png" class="mx-auto d-block" style="height:25px;"></td>
                    <th scope="row">${game.away}</th>
                    <td>${elo_pts_margin_away}</td>
                    <td>${away_chance}</td>
                    <td>${tree_spread_away}</td>
                  </tr>`
-    
     
     tbody = table.append("tbody").html(tbody_html)
     

@@ -1,1 +1,1 @@
-FLASK_APP=NBA-Predictions/app.py flask run
+FLASK_APP=NBA-Predictions/Web/app.py flask run

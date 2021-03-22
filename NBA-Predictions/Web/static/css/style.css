@@ -1,3 +1,9 @@
 h1 {
     color:orange
 }
+
+.line {
+        fill: none;
+        stroke: orange;
+        stroke-width: 2px;
+      }

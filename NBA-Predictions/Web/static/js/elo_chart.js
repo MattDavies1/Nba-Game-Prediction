@@ -1,14 +1,52 @@
 // create dropdown
-var dropdown = d3.select("#dropdown")
-d3.csv("output.csv").then(function(data){
-  console.log(data)
-  console.log(Object.keys(data[0]))
-  var keys = Object.keys(data[0])
+var url = "../static/js/output.csv"
 
-keys.forEach((key)=>{
-    dropdown.append("option").text(key).property("value",key).attr("id",key)
-  });
-});
+var dropdown = d3.select("#dropdown")
+// d3.csv("output.csv").then(function(data){
+//   console.log(data)
+//   console.log(Object.keys(data[0]))
+//   var keys = Object.keys(data[0])
+
+// keys.forEach((key)=>{
+//     dropdown.append("option").text(key).property("value",key).attr("id",key)
+//   });
+// });
+
+var teams = {
+  1610612737: "Atlanta Hawks",
+  1610612738:	'Boston Celtics',
+  1610612740:	'New Orleans Pelicans',
+  1610612741:'Chicago Bulls',
+  1610612742:	'Dallas Mavericks',
+  1610612743: 'Denver Nuggets',
+  1610612745:	'Houston Rockets',
+  1610612746:	'Los Angeles Clippers',
+  1610612747:	'Los Angeles Lakers',
+  1610612748:	'Miami Heat',
+  1610612749:	'Milwaukee Bucks',
+  1610612750:	'Minnesota Timberwolves',
+  1610612751:	'Brooklyn Nets',
+  1610612752:	'New York Knicks',
+  1610612753:	'Orlando Magic',
+  1610612754:	'Indiana Pacers',
+  1610612755:	'Philadelphia 76ers',
+  1610612756:	'Phoenix Suns',
+  1610612757:	'Portland Trail Blazers',
+  1610612758:	'Sacramento Kings',
+  1610612759:'San Antonio Spurs',
+  1610612760: 'Oklahoma City Thunder',
+  1610612761: 'Toronto Raptors',
+  1610612762:	'Utah Jazz',
+  1610612763:	'Memphis Grizzlies',
+  1610612764:	'Washington Wizards',
+  1610612765:	'Detroit Pistons',
+  1610612766:	'Charlotte Hornets',
+  1610612739:	'Cleveland Cavaliers',
+  1610612744:	'Golden State Warriors'
+  };
+Object.entries(teams).forEach(([key,value])=>{
+  dropdown.append("option").text(value).property("value",key).attr("id",key)
+})
 
 
 function updatePlot(teamid){
@@ -41,16 +79,15 @@ var chartGroup = svg.append("g")
 // Configure a parseTime function which will return a new Date object from a string
 var parseTime = d3.timeParse("%Y-%m-%d");
 
+// Load data from miles-walked-this-month.csv
+  d3.csv(url).then(function(teamdata) {
 
-// Load data 
-  d3.csv("output.csv").then(function(teamdata) {
-
-    // Print Data
+    // Print the milesData
     console.log(teamdata);
 
     // Format the date and cast the miles value to a number
     teamdata.forEach(function(data) {
-      data.date = parseTime(data["Date"]);
+      data.date = parseTime(data["DATE"]);
       data.team = +data[teamid];
     });
 
@@ -95,7 +132,7 @@ var parseTime = d3.timeParse("%Y-%m-%d");
       .classed("axis", true)
       .attr("transform", "translate(0, " + chartHeight + ")")
       .call(bottomAxis);
-      
+
   }).catch(function(error) {
     console.log(error);
   });

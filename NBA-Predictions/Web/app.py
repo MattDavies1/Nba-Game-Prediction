@@ -23,7 +23,7 @@ import pandas as pd
 # Flask Setup
 app = Flask(__name__)
 
-engine = create_engine('postgres://awajcqhq:4CfuU4ZPzBv5ax89ArRPL9P51juwwfQf@queenie.db.elephantsql.com:5432/awajcqhq')
+engine = create_engine("postgres://awajcqhq:4CfuU4ZPzBv5ax89ArRPL9P51juwwfQf@queenie.db.elephantsql.com:5432/awajcqhq")
 
 Base = automap_base()
 Base.prepare(engine, reflect=True)

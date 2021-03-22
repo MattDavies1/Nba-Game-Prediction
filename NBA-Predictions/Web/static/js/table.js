@@ -1,48 +1,48 @@
 // finding the table in html
-var table = document.getElementById("tableID");
+// var table = document.getElementById("tableID");
 
-var dummy_games = [{"game_date":"2021-03-20", "home_team":"TOR", "away_team":"OKC", "home_elo":1600, "away_elo":1500, "tree_winner":"TOR"}, {"game_date":"2021-03-20", "home_team":"ATL", "away_team":"GSW", "home_elo":1450, "away_elo":1800, "tree_winner":"GSW"}];
+var dummy_games = [
+{
+"ELO_a": 1485.84, 
+"ELO_h": 1536.55, 
+"away": "IND", 
+"home": "MIA", 
+"id": "0022000645", 
+"line": "-4.5", 
+"proj_win": "IND"
+},
+{
+"ELO_a": 1428.08, 
+"ELO_h": 1311.83, 
+"away": "OKC", 
+"home": "HOU", 
+"id": "0022000016", 
+"line": "-4.5", 
+"proj_win": "HOU"
+},
+{
+"ELO_a": 1500.75, 
+"ELO_h": 1624.73, 
+"away": "NOP", 
+"home": "DEN", 
+"id": "0022000646", 
+"line": "-5.5", 
+"proj_win": "NOP"
+},
+{
+"ELO_a": 1384.9, 
+"ELO_h": 1507.7, 
+"away": "ORL", 
+"home": "BOS", 
+"id": "0022000167", 
+"line": "-1", 
+"proj_win": "ORL"
+}
+];
 
-//creating table function
-dummy_games.forEach((game) => {
-    if(game.tree_winner== game.home_team){
-        temp_home_elo = game.home_elo + 100;
-        elo_diff = game.away_elo - temp_home_elo;
-        home_chance = (1/(1+10**(elo_diff/400)))*100;
-        home_chance = home_chance.toFixed(2);
-        away_chance = (1-(1/(1+10**(elo_diff/400))))*100;
-        away_chance = away_chance.toFixed(2);
-        elo_est_pts_margin = (temp_home_elo - game.away_elo)/28;
-    } else {
-        temp_home_elo = game.home_elo + 100;
-        elo_diff = temp_home_elo - game.away_elo;
-        home_chance = (1/(1+10**(elo_diff/400)))*100;
-        home_chance = home_chance.toFixed(2);
-        away_chance = (1-(1/(1+10**(elo_diff/400))))*100;
-        away_chance = away_chance.toFixed(2);
-        elo_est_pts_margin = (game.away_elo - temp_home_elo)/28;
-    }
-    var row = table.insertRow(-1);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
-    var cell6 = row.insertCell(5);
-    var cell7 = row.insertCell(6);
-    var cell8 = row.insertCell(7);
-    var cell9 = row.insertCell(8);
-    cell1.innerHTML = game.game_date;
-    cell2.innerHTML = game.home_team;
-    cell3.innerHTML = game.away_team;
-    cell4.innerHTML = game.home_elo;
-    cell5.innerHTML = game.away_elo;
-    cell6.innerHTML = game.tree_winner;
-    cell7.innerHTML = (Math.round(home_chance)+"%");
-    cell8.innerHTML = (Math.round(away_chance)+"%");
-    cell9.innerHTML = "+"+Math.round(elo_est_pts_margin);
-  });
-
+function roundHalf(num) {
+    return Math.round(num*2)/2;
+}
 
 var header = `
 <thead>
@@ -51,59 +51,74 @@ var header = `
         <th scope="col">ELO win margin</th>
         <th scope="col">ELO win prob.</th>
         <th scope="col">Tree spread</th>
-        <th scope="col">Tree win prob</th>
     </tr>
 </thead>
 `
 
 
 dummy_games.forEach(game=>{
-    // if(game.home_elo > geme.away_elo){
-    //     temp_home_elo = game.home_elo + 100;
-    //     elo_diff = game.away_elo - temp_home_elo;
-    //     home_chance = (1/(1+10**(elo_diff/400)))*100;
-    //     home_chance = home_chance.toFixed(2);
-    //     away_chance = (1-(1/(1+10**(elo_diff/400))))*100;
-    //     away_chance = away_chance.toFixed(2);
-    //     elo_est_pts_margin = (temp_home_elo - game.away_elo)/28;
-    // }
-    // else if(game.home_elo < game.away_elo){
-    //     temp_home_elo = game.home_elo + 100;
-    //     elo_diff = temp_home_elo - game.away_elo;
-    //     home_chance = (1/(1+10**(elo_diff/400)))*100;
-    //     home_chance = home_chance.toFixed(2);
-    //     away_chance = (1-(1/(1+10**(elo_diff/400))))*100;
-    //     away_chance = away_chance.toFixed(2);
-    //     elo_est_pts_margin = (game.away_elo - temp_home_elo)/28;
-    // }
+    home_adj_elo = game.ELO_h + 100
+    // set elo parameters
+    if(home_adj_elo > game.ELO_a){
+        elo_diff = game.ELO_a - home_adj_elo;
+        home_chance = (1/(1+10**(elo_diff/400)));
+        home_chance = home_chance.toFixed(2);
+        away_chance = (1-(1/(1+10**(elo_diff/400))));
+        away_chance = away_chance.toFixed(2);
+        elo_pts_margin_home = roundHalf((home_adj_elo - game.ELO_a)/28);
+        elo_pts_margin_away = "-"
+    }
+    else if(home_adj_elo < game.ELO_a){
+        elo_diff = home_adj_elo - game.ELO_a;
+        home_chance = (1/(1+10**(elo_diff/400)));
+        home_chance = home_chance.toFixed(2);
+        away_chance = 1-(1/(1+10**(elo_diff/400)));
+        away_chance = away_chance.toFixed(2);
+        elo_pts_margin_home = "-"
+        elo_pts_margin_away = roundHalf((game.ELO_a - home_adj_elo)/28);
+    }
+    else {
+        elo_diff = 0;
+        home_chance = 0.50;
+        away_chance = 0.50;
+        elo_pts_margin_home = "-"
+        elo_pts_margin_away = "-";
+    }
+    if(game.proj_win == game.home){
+        tree_spread_home = game.line
+        tree_spread_away = "-"
+ 
+    }
+    else{
+        tree_spread_home = "-"
+        tree_spread_away = game.line
+
+    }
 
     // add header of table card
     var container = d3.select("#game-cards")
     var column = container.append("div").attr("class", "col-sm-6")
-    var card = column.append("div").attr("class", "card-body")
-    var table = card.append("table").attr("class", "table").html(header)
+    var card = column.append("div").attr("class", "card")
+    var card_body = card.append("div").attr("class", "card-body")
+    var table = card_body.append("table").attr("class", "table").html(header)
     
     // define table body text here
     tbody_html = `<tr>
-                   <th scope="row">${game.home_team}</th>
-                   <td>-7</td>
-                   <td>76%</td>
-                   <td>-6</td>
-                   <td>70%</td>
+                   <th scope="row">${game.home}</th>
+                   <td>${elo_pts_margin_home}</td>
+                   <td>${home_chance}</td>
+                   <td>${tree_spread_home}</td>
                  </tr>
                  <tr>
-                   <th scope="row">${game.away_team}</th>
-                   <td></td>
-                   <td>24%</td>
-                   <td></td>
-                   <td>30%</td>
+                   <th scope="row">${game.away}</th>
+                   <td>${elo_pts_margin_away}</td>
+                   <td>${away_chance}</td>
+                   <td>${tree_spread_away}</td>
                  </tr>`
     
     
     tbody = table.append("tbody").html(tbody_html)
     
-
-
 });
 
 

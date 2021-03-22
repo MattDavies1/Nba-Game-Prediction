@@ -1,3 +1,4 @@
+
 // finding the table in html
 // var table = document.getElementById("tableID");
 
@@ -120,3 +121,4 @@ dummy_games.forEach(game=>{
     tbody = table.append("tbody").html(tbody_html)
     
 });
+

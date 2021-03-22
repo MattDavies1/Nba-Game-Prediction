@@ -1,5 +1,6 @@
 // create dropdown
 var url = "../static/js/output.csv"
+var test = "/api/elo"
 
 var dropdown = d3.select("#dropdown")
 // d3.csv("output.csv").then(function(data){

@@ -5,30 +5,29 @@ function roundHalf(num) {
 
 var url = "/model"
 
-var header = `
-<thead>
-    <tr>
-        <th scope="col"></th>
-        <th scope="col">ELO</th>
-        <th scope="col"></th>
-        <th scope="col">Tree</th>
-        <th scope="col"></th>
-    </tr>
-    <tr>
-        <th scope="col"></th>
-        <th scope="col">Spread</th>
-        <th scope="col">Win Prob</th>
-        <th scope="col">Spread</th>
-        <th scope="col">Win Prob</th>
-    </tr>
-</thead>
-`
+var header = `<thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">ELO</th>
+                        <th scope="col"></th>
+                        <th scope="col">Tree</th>
+                        <th scope="col"></th>
+                    </tr>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Proj. Margin</th>
+                        <th scope="col">Win Prob</th>
+                        <th scope="col">Proj. Margin</th>
+                        <th scope="col">Win Prob</th>
+                    </tr>
+                </thead>`
 
 d3.json(url).then(data=>{
     data.forEach(game => {
         //console.log(game)
         home_adj_elo = game.elo_h + 100
         // set elo parameters
+        //Away fav
         if(home_adj_elo < game.elo_a){
             elo_diff = game.elo_a - home_adj_elo;
             home_chance = (1/(1+10**(elo_diff/400)));
@@ -36,17 +35,19 @@ d3.json(url).then(data=>{
             away_chance = (1-(1/(1+10**(elo_diff/400))));
             away_chance = away_chance.toFixed(2);
             elo_pts_margin_home = "-"
-            elo_pts_margin_away = roundHalf((home_adj_elo - game.elo_a)/28);
+            elo_pts_margin_away = "+" + Math.abs(roundHalf((home_adj_elo - game.elo_a)/28));
         }
+        //Home fav
         else if(home_adj_elo > game.elo_a){
-            elo_diff = home_adj_elo - game.elo_a;
+            elo_diff = game.elo_a - home_adj_elo;
             home_chance = (1/(1+10**(elo_diff/400)));
             home_chance = home_chance.toFixed(2);
             away_chance = 1-(1/(1+10**(elo_diff/400)));
             away_chance = away_chance.toFixed(2);
-            elo_pts_margin_home = roundHalf((game.elo_a - home_adj_elo)/28);
+            elo_pts_margin_home = "+" + Math.abs(roundHalf((game.elo_a - home_adj_elo)/28));
             elo_pts_margin_away = "-"
         }
+        //Tie
         else {
             elo_diff = 0;
             home_chance = 0.50;
@@ -55,7 +56,7 @@ d3.json(url).then(data=>{
             elo_pts_margin_away = "-";
         }
         if(game.proj_win == game.home){
-            tree_spread_home = game.line
+            tree_spread_home = "+" + Math.abs(game.line)
             tree_spread_away = "-"
             tree_prob_home = game.home_win
             tree_prob_away = game.away_win
@@ -63,7 +64,7 @@ d3.json(url).then(data=>{
         }
         else{
             tree_spread_home = "-"
-            tree_spread_away = game.line
+            tree_spread_away = "+" + Math.abs(game.line)
             tree_prob_away = game.away_win
             tree_prob_home = game.home_win
         }

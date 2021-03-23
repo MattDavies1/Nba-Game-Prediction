@@ -125,53 +125,35 @@ var dummy_elos = [
 // dataSorted = dummy_elos.sort(function (a) {
 //     return d3.ascending(a.elo);
 // })
+d3.json("/elo").then(data => {
+  dataSorted = data.sort(function(a, b) { return a.elo - b.elo });
 
-dataSorted = dummy_elos.sort(function(a, b) { return b.elo - a.elo });
+  console.log(dataSorted)
 
-// Define SVG area dimensions
-var svgWidth = 960;
-var svgHeight = 660;
+  let elos = dataSorted.map(team=>team.elo)
+  let names = dataSorted.map(team=>String(team.id))
 
-// Define the chart's margins as an object
-var chartMargin = {
-  top: 30,
-  right: 30,
-  bottom: 30,
-  left: 30
-};
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
 
-// Define dimensions of the chart area
-var chartWidth = svgWidth - chartMargin.left - chartMargin.right;
-var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
+  today = mm + '/' + dd + '/' + yyyy;
 
-// Select body, append SVG area to it, and set the dimensions
-var svg = d3
-  .select("#elo-bars")
-  .append("svg")
-  .attr("height", svgHeight)
-  .attr("width", svgWidth);
+  var plotData = [{
+    x: elos,
+    y: names,
+    type: "bar",
+    orientation: 'h'
+  }];
 
-  // Append a group to the SVG area and shift ('translate') it to the right and down to adhere
-// to the margins set in the "chartMargin" object.
-var chartGroup = svg.append("g")
-.attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
+  var layout = {
+    title: `Team ELOs as of ${today}`,
+    height: 700,
+    xaxis: {range: [1200, 1800],},
+    yaxis: {type: 'category'},
+  };
 
-dataSorted.forEach(data => {
-    data.elo = +data.elo
-})
-
-var barSpacing = 10;
-var scaleY = .333;
-
-// Create a 'barWidth' variable so that the bar chart spans the entire chartWidth.
-var barWidth = (chartWidth - (barSpacing * (dataSorted.length - 1))) / dataSorted.length;
-
-chartGroup.selectAll(".bar")
-    .data(dataSorted)
-    .enter()
-    .append("rect")
-    .classed("bar", true)
-    .attr("width", d => barWidth)
-    .attr("height", d => d.elo*scaleY)
-    .attr("x", (d, i) => i * (barWidth + barSpacing))
-    .attr("y", d => chartHeight - d.elo * scaleY);
+  Plotly.newPlot("elo-bars", plotData, layout)
+  
+});

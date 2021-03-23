@@ -53,18 +53,20 @@ def eloroute():
 @app.route("/model")
 def modelroute():
     session = Session(engine)
-    data = session.query(Model.game_id, Model.home, Model.away, Model.projected_winner, Model.predicted_line, Model.ELO_home, Model.ELO_away).all()
+    data = session.query(Model.game_id, Model.home, Model.away, Model.home_win, Model.away_win, Model.projected_winner, Model.predicted_line, Model.elo_home, Model.elo_away).all()
     session.close()
     model = []
-    for game_id, home, away, proj_win, line, ELO_h, ELO_a in data:
+    for game_id, home, away, home_win, away_win, proj_win, line, ELO_h, ELO_a in data:
         game = {}
         game["id"] = game_id
         game["home"] = home
         game["away"] = away
+        game["home_win"] = home_win
+        game["away_win"] = away_win
         game["proj_win"] = proj_win
         game["line"] = line
-        game["ELO_h"] = ELO_h
-        game["ELO_a"] = ELO_a
+        game["elo_h"] = ELO_h
+        game["elo_a"] = ELO_a
         model.append(game)
     return jsonify(model)
 

@@ -31,6 +31,7 @@ Base.prepare(engine, reflect=True)
 Model = Base.classes.model
 Elos = Base.classes.elos
 
+
 # HTML Routes
 @app.route("/")
 def home():
@@ -47,7 +48,7 @@ def teamsroute():
 @app.route("/elo")
 def eloroute():
     session = Session(engine)
-    sel = [Elos.date, Elos.bucks, Elos.raptors, Elos.sixers,
+    sel = [Elos.newdate, Elos.bucks, Elos.raptors, Elos.sixers,
     Elos.celtics, Elos.pacers, Elos.nets, Elos.magic, Elos.pistons, Elos.hornets,	
     Elos.heat,	Elos.wizards, Elos.hawks, Elos.bulls, Elos.cavs,	
     Elos.knicks, Elos.warriors, Elos.nuggets, Elos.rockets, Elos.blazers, Elos.jazz, Elos.thunder, Elos.clippers,

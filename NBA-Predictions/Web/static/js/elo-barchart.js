@@ -131,7 +131,7 @@ d3.json("/elo").then(data => {
   console.log(dataSorted)
 
   let elos = dataSorted.map(team=>team.elo)
-  let names = dataSorted.map(team=>String(team.id))
+  let names = dataSorted.map(team=>String(team.nickname))
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');

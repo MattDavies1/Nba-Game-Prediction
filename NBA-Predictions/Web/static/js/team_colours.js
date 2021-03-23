@@ -180,4 +180,3 @@ team_colours = [
       "hexcode3": ""
     }]
 
-    console.log("Team Colours")

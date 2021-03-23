@@ -29,6 +29,7 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 Model = Base.classes.model
+Elo = Base.classes.current_elo
 
 # HTML Routes
 @app.route("/")
@@ -46,9 +47,16 @@ def teamsroute():
 @app.route("/elo")
 def eloroute():
     session = Session(engine)
+    data = session.query(Elo.team_id, Elo.elo)
     session.close()
-    elo_df = {}
-    return jsonify(elo_df)
+    elos = []
+    for x, y in data:
+        team = {}
+        team["id"] = x
+        team["elo"] = y
+        elos.append(team)
+
+    return jsonify(elos)
 
 @app.route("/model")
 def modelroute():

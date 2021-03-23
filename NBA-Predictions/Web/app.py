@@ -30,6 +30,7 @@ Base.prepare(engine, reflect=True)
 
 Model = Base.classes.model
 Elo = Base.classes.current_elo
+Team = Base.classes.teams
 
 # HTML Routes
 @app.route("/")
@@ -47,12 +48,12 @@ def teamsroute():
 @app.route("/elo")
 def eloroute():
     session = Session(engine)
-    data = session.query(Elo.team_id, Elo.elo)
+    data = session.query(Team.nickname, Elo.elo).filter(Team.team_id == Elo.team_id).all()
     session.close()
     elos = []
     for x, y in data:
         team = {}
-        team["id"] = x
+        team["nickname"] = x
         team["elo"] = y
         elos.append(team)
 

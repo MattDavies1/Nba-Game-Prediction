@@ -1,10 +1,12 @@
-
+// rounding function
 function roundHalf(num) {
     return Math.round(num*2)/2;
 }
 
+// path to app.py
 var url = "/model"
 
+// creating table headers
 var header = `<thead>
                     <tr>
                         <th scope="col"></th>
@@ -24,6 +26,7 @@ var header = `<thead>
                     </tr>
                 </thead>`
 
+// generating a table given json
 d3.json(url).then(data=>{
     data.forEach(game => {
         //console.log(game)
@@ -96,8 +99,7 @@ d3.json(url).then(data=>{
                     <td>${tree_prob_home}</td>
                     </tr>
                     `
-        
-        
+        // appending table
         tbody = table.append("tbody").html(tbody_html)
         }
         );

@@ -87,9 +87,9 @@ function updatePlot(teamid){
 
       // Format the date 
       teamdata.forEach(function(data) {
-        data.date = data.Date;
+        data.date = parseTime(data.Date);
         data.team = +data[teamid];
-        console.log(data.date)
+        console.log(data)
       });
 
       // Configure a time scale with a range between 0 and the chartWidth
@@ -133,6 +133,20 @@ function updatePlot(teamid){
         .classed("axis", true)
         .attr("transform", "translate(0, " + chartHeight + ")")
         .call(bottomAxis);
+      
+      // Create axes labels
+    chartGroup.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left + 2)
+    .attr("x", 0 - (chartHeight / 2))
+    .attr("dy", "1em")
+    .attr("class", "axisText")
+    .text("ELO Ranking");
+
+  chartGroup.append("text")
+    .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + margin.top -15})`)
+    .attr("class", "axisText")
+    .text("Dates");
 
     }).catch(function(error) {
       console.log(error);

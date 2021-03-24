@@ -48,12 +48,12 @@ def teamsroute():
 @app.route("/elo")
 def eloroute():
     session = Session(engine)
-    sel = [Elos.newdate, Elos.bucks, Elos.raptors, Elos.sixers,
+    sel = [Elos.newdatex, Elos.bucks, Elos.raptors, Elos.sixers,
     Elos.celtics, Elos.pacers, Elos.nets, Elos.magic, Elos.pistons, Elos.hornets,	
     Elos.heat,	Elos.wizards, Elos.hawks, Elos.bulls, Elos.cavs,	
     Elos.knicks, Elos.warriors, Elos.nuggets, Elos.rockets, Elos.blazers, Elos.jazz, Elos.thunder, Elos.clippers,
     Elos.spurs, Elos.kings, Elos.lakers, Elos.timberwolves, Elos.mavericks, Elos.grizzlies, Elos.pelicans, Elos.suns]
-    results = session.query(*sel).all()
+    results = session.query(*sel).order_by(Elos.newdate).all()
     session.close()
     elo_list = []
     for result in results:
@@ -90,6 +90,7 @@ def eloroute():
         elo_dict["New Orleans Pelicans"] = result[29]
         elo_dict["Phoenix Suns"] = result[30]
         elo_list.append(elo_dict)
+    print(f'printing date {elo_list[1]["Date"]}')
     return jsonify(elo_list)
 
 @app.route("/model")

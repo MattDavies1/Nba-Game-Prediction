@@ -8,12 +8,14 @@ var url = "/model"
 var header = `<thead>
                     <tr>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                         <th scope="col">ELO</th>
                         <th scope="col"></th>
                         <th scope="col">Tree</th>
                         <th scope="col"></th>
                     </tr>
                     <tr>
+                        <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col">Proj. Margin</th>
                         <th scope="col">Win Prob</th>
@@ -72,12 +74,13 @@ d3.json(url).then(data=>{
         // add header of table card
         var container = d3.select("#game-cards")
         var column = container.append("div").attr("class", "col-sm-6")
-        var card = column.append("div").attr("class", "card")
+        var card = column.append("div").attr("class", "card mb-3")
         var card_body = card.append("div").attr("class", "card-body")
         var table = card_body.append("table").attr("class", "table").html(header)
         
         // define table body text here
         tbody_html = `<tr>
+                    <td><img src="static/images/teams/${game.away}.png" class="mx-auto d-block" style="height:25px;"></td>
                     <th scope="row">${game.away}</th>
                     <td>${elo_pts_margin_away}</td>
                     <td>${away_chance}</td>
@@ -85,6 +88,7 @@ d3.json(url).then(data=>{
                     <td>${tree_prob_away}</td>
                     </tr>
                     <tr>
+                    <td><img src="static/images/teams/${game.home}.png" class="mx-auto d-block" style="height:25px;"></td>
                     <th scope="row">${game.home}</th>
                     <td>${elo_pts_margin_home}</td>
                     <td>${home_chance}</td>

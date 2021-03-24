@@ -45,8 +45,9 @@ def teamsroute():
     team_list = []
     return jsonify(team_list)
 
-@app.route("/elo")
-def eloroute():
+
+@app.route("/elochart")
+def elochartroute():
     session = Session(engine)
     sel = [Elos.newdatex, Elos.bucks, Elos.raptors, Elos.sixers,
     Elos.celtics, Elos.pacers, Elos.nets, Elos.magic, Elos.pistons, Elos.hornets,	

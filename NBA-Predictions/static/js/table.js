@@ -79,11 +79,11 @@ d3.json(url).then(data=>{
         var column = container.append("div").attr("class", "col-sm-6")
         var card = column.append("div").attr("class", "card mb-3")
         var card_body = card.append("div").attr("class", "card-body")
-        var table = card_body.append("table").attr("class", "table").html(header)
+        var table = card_body.append("table").attr("class", "table table-responsive").html(header)
         
         // define table body text here
         tbody_html = `<tr>
-                    <td><img src="static/images/teams/${game.away}.png" class="mx-auto d-block" style="height:25px;"></td>
+                    <td><img src="static/images/${game.away}.png" class="mx-auto d-block" style="height:25px;"></td>
                     <th scope="row">${game.away}</th>
                     <td>${elo_pts_margin_away}</td>
                     <td>${away_chance}</td>
@@ -91,7 +91,7 @@ d3.json(url).then(data=>{
                     <td>${tree_prob_away}</td>
                     </tr>
                     <tr>
-                    <td><img src="static/images/teams/${game.home}.png" class="mx-auto d-block" style="height:25px;"></td>
+                    <td><img src="static/images/${game.home}.png" class="mx-auto d-block" style="height:25px;"></td>
                     <th scope="row">${game.home}</th>
                     <td>${elo_pts_margin_home}</td>
                     <td>${home_chance}</td>

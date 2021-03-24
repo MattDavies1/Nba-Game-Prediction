@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>NBA</title>
+  <title>FiveThirtyEight-ish</title>
 
   <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
@@ -20,11 +20,12 @@
 
 <body>
   <div id='header_scroll'>
+    <br>
     <h1>
       NBA Game Predictions
     </h1>
     <p class="lead">
-      NBA Games Preditions via Elo rating system
+      NBA Games Preditions via Elo Rating System and Recent Game Random Forest Model
     </p>
   </div>
 
@@ -35,6 +36,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+  </div>
+  <div class = "container">
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">Model Explanation</div>
+            <div class="card-body">
+              <P>This will be the place for an explanation</P>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+<br>
   </div>
   <div class = "container">
     <div class="row" id="game-cards">

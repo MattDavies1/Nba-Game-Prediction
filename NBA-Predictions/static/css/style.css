@@ -2,25 +2,20 @@ h1 {
     color:orange
 }
 
-
-.line {
-        fill: none;
-        stroke: orange;
-        stroke-width: 2px;
-      }
-
-.axisText {
-        font-family: sans-serif;
-        font-weight: bold;
-        fill:black;
-        text-anchor: middle;
-      }
-
-
 body {
     font: 11px sans-serif;
   }
   
+  th {
+    font-family: "Trebuchet MS", Arial, Verdana;
+    font-size: 13px;
+  }
+
+  td {
+    font-family: "Trebuchet MS", Arial, Verdana;
+    font-size: 12px;
+  }
+
   .axis path,
   .axis line {
     fill: none;
@@ -84,7 +79,6 @@ body {
     height: 240px;
     width: 100%; /* Full width */
     transition: 0.6s; /* Add a transition effect (when scrolling - and font size is decreased) */
-    text-align: center;
   }
 
 #body_text{

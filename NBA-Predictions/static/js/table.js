@@ -19,9 +19,9 @@ var header = `<thead>
                     <tr>
                         <th scope="col"></th>
                         <th scope="col"></th>
-                        <th scope="col">Proj. Margin</th>
+                        <th scope="col">Margin</th>
                         <th scope="col">Win Prob</th>
-                        <th scope="col">Proj. Margin</th>
+                        <th scope="col">Margin</th>
                         <th scope="col">Win Prob</th>
                     </tr>
                 </thead>`
@@ -76,7 +76,7 @@ d3.json(url).then(data=>{
 
         // add header of table card
         var container = d3.select("#game-cards")
-        var column = container.append("div").attr("class", "col-sm-6")
+        var column = container.append("div").attr("class", "col-md-6 col-sm-12")
         var card = column.append("div").attr("class", "card mb-3")
         var card_body = card.append("div").attr("class", "card-body")
         var table = card_body.append("table").attr("class", "table table-responsive").html(header)

@@ -2,10 +2,18 @@ h1 {
     color:orange
 }
 
+
 .line {
         fill: none;
         stroke: orange;
         stroke-width: 2px;
+      }
+
+.axisText {
+        font-family: sans-serif;
+        font-weight: bold;
+        fill:black;
+        text-anchor: middle;
       }
 
 

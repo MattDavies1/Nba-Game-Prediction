@@ -106,7 +106,7 @@ def elochartroute():
         elo_dict["New Orleans Pelicans"] = result[29]
         elo_dict["Phoenix Suns"] = result[30]
         elo_list.append(elo_dict)
-    print(f'printing date {elo_list[1]["Date"]}')
+    # print(f'printing date {elo_list[1]["Date"]}')
     return jsonify(elo_list)
 
 @app.route("/model")

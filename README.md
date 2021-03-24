@@ -27,4 +27,4 @@ Our project goal is create an ELO rating system for NBA teams and build a model 
 
 ### Deployment
 
-A flask app will be created and hosted on Heroku.
+A flask app will be created and hosted on Heroku. https://fivethirtyeight-ish.herokuapp.com/

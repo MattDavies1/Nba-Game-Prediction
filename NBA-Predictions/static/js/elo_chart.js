@@ -89,7 +89,7 @@ function updatePlot(teamid){
       teamdata.forEach(function(data) {
         data.date = parseTime(data.Date);
         data.team = +data[teamid];
-        console.log(data)
+        // console.log(data)
       });
 
       // Configure a time scale with a range between 0 and the chartWidth

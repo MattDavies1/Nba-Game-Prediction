@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>NBA</title>
+  <title>FiveThirtyEight-ish</title>
 
   <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
@@ -14,17 +14,18 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <!-- <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body>
-  <div class="jumbotron">
-    <h1 class="display-4">
-      <center>NBA Game Predictions</center>
+  <div id='header_scroll'>
+    <br>
+    <h1>
+      NBA Game Predictions
     </h1>
     <p class="lead">
-      <center>NBA Games Preditions via Elo rating system</center>
+      NBA Games Preditions via Elo Rating System and Recent Game Random Forest Model
     </p>
   </div>
 
@@ -35,15 +36,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/player">2014</a>
-      <a class="nav-item nav-link active" href="/player">2015</a>
-      <a class="nav-item nav-link active" href="/player">2016</a>
-      <a class="nav-item nav-link active" href="/player">2017</a>
-      <a class="nav-item nav-link active" href="/player">2018</a>
-      <a class="nav-item nav-link active" href="/player">2019</a>
-      <a class="nav-item nav-link active" href="/player">2020</a>
+  </div>
+  <div class = "container">
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">Model Explanation</div>
+            <div class="card-body">
+              <P>This will be the place for an explanation</P>
+            </div>
+          </div>
+        </div>
     </div>
+  </div>
+<br>
   </div>
   <div class = "container">
     <div class="row" id="game-cards">
@@ -54,6 +60,10 @@
 
 
   <div class="container" id="elo-bars">
+    <!-- ELO BARS HERE -->
+  </div>
+
+  <div class="container" id="elo-start">
     <!-- ELO BARS HERE -->
   </div>
 
@@ -73,6 +83,7 @@
 
   <script src="../static/js/team_colours.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+  <script src="../static/js/html_design.js"></script>
   <script src="../static/js/elo_chart.js"></script>
   <script src="../static/js/table.js"></script>
   <script src="../static/js/elo-barchart.js"></script>

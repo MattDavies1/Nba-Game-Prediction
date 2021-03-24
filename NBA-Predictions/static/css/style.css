@@ -84,6 +84,7 @@ body {
     height: 240px;
     width: 100%; /* Full width */
     transition: 0.6s; /* Add a transition effect (when scrolling - and font size is decreased) */
+    text-align: center;
   }
 
 #body_text{

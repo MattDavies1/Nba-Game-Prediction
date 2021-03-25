@@ -8,12 +8,12 @@ body {
   
   th {
     font-family: "Trebuchet MS", Arial, Verdana;
-    font-size: 13px;
+    font-size: 16px;
   }
 
   td {
     font-family: "Trebuchet MS", Arial, Verdana;
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .axis path,

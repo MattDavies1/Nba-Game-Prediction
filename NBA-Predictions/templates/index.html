@@ -43,7 +43,11 @@
           <div class="card">
             <div class="card-header">Model Explanation</div>
             <div class="card-body">
-              <P>This will be the place for an explanation</P>
+              <P>
+                <strong>ELO:</strong>  Represents a team's performance relative to it's peers. This value, relative to another team, represents the probability that one team will beat another, and the most likely points spread. It considers only the outcome of every game and which team was home to calculate.
+                <br>
+                <br>
+                <strong>Tree:</strong> Built using sklearn Random Forest Classification. A random forest consists of a large number of individual decision trees that operate as an ensemble. Each tree in the forest predicts a class prediction (home team win or loss) based on major NBA statistics. And the class with the most "votes" becomes the overall model prediction. The inputs to the model are the rolling averages for each team leading up to their game. The model is trained and tested on 2020-21 game data.</P>
             </div>
           </div>
         </div>
@@ -66,20 +70,23 @@
   <div class="container" id="elo-start">
     <!-- ELO BARS HERE -->
   </div>
-
-  <div class="card" id="elocard">
-    <div class="card-header">
-      <h4>Team Elo scores over time</h4>
-    </div>
-    <div class="card card-body" id="elo_chart">
-      <p>
-        <i>Select Team</i>
-        <select id="dropdown" onchange="optionChanged(this.value)">
-          <!-- <option hidden >Points</option> -->
-        </select>
-      </p>
+  
+  <div class="container" id="team-elo-over-time">
+    <div class="card" id="elocard">
+      <div class="card-header">
+        <h4>Team Elo scores over time</h4>
+      </div>
+      <div class="card card-body" id="elo_chart">
+        <p>
+          <i>Select Team</i>
+          <select id="dropdown" onchange="optionChanged(this.value)">
+            <!-- <option hidden >Points</option> -->
+          </select>
+        </p>
+      </div>
     </div>
   </div>
+  
 
   <script src="../static/js/team_colours.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>

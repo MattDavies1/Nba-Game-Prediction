@@ -56,6 +56,14 @@
 <br>
   </div>
   <div class = "container">
+    <h2 id="game-day-text"></h2>
+    <script>
+      n =  new Date();
+      y = n.getFullYear();
+      m = n.getMonth() + 1;
+      d = n.getDate();
+      document.getElementById("game-day-text").innerHTML = "Games for " + m + "/" + d + "/" + y;
+    </script>
     <div class="row" id="game-cards">
         <!-- CARDS HERE -->
 

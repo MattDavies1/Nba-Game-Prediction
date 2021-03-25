@@ -6,24 +6,24 @@ body {
     font: 11px sans-serif;
   }
   
-  th {
+th {
     font-family: "Trebuchet MS", Arial, Verdana;
     font-size: 16px;
   }
 
-  td {
+td {
     font-family: "Trebuchet MS", Arial, Verdana;
     font-size: 15px;
   }
 
-  .axis path,
-  .axis line {
+.axis path,
+.axis line {
     fill: none;
     stroke: #000;
     shape-rendering: crispEdges;
   }
   
-  .dot {
+.dot {
     stroke: #000;
   }
   
@@ -54,7 +54,7 @@ body {
     border-radius: 12px;
   }
 
-  #body{
+#body{
       font-family: Georgia, 'Times New Roman', Times, serif;
   }
 
